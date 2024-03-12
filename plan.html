@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan zajęć</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            background-color: #ffffff; /* Lekko szary kolor tła */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        body {
+            background-image:url('doplanu.jpg');
+            background-size:cover;
+            
+            
+           
+            
+        }
+        .tlo{
+            background-color:white;
+        }
+    </style>
+     <link rel="icon" href="Кузьма.png" type="image/x-icon">
+</head>
+<body>
+<div class="tlo">
+<h2>Plan zajęć C271 Informatyka w biznesie GRUPA B</h2>
+
+<p>Tydzień: 
+  <button onclick="selectWeek('even')">Parzysty</button>
+  <button onclick="selectWeek('odd')">Nieparzysty</button>
+</p>
+
+<table id="schedule_table">
+  <tr>
+    <th>Godzina</th>
+    <th>Poniedziałek</th>
+    <th>Wtorek</th>
+    <th>Środa</th>
+    <th>Czwartek</th>
+    <th>Piątek</th>
+  </tr>
+  <!-- Tutaj możesz wstawić dane z planem zajęć -->
+</table>
+</div>
+<script>
+    const scheduleData = {
+        even: [
+            ["08:15", "", "Podstawy Rachunkowości [s. SIL 116]", "Prog. Obiektowe wykład [s.507]", "Prog. Obiektowe LB [s.423]", "Matematyka CW [s.112]"],
+            ["10:00", "11:00 WF Tenis [Mickiewicza 16]", "Planowanie Przedsięwzięć [s.423]", "Procesy Biznesowe wykład [s.607]", "Prog. Obiektowe LB [s.423]", "Matematyka CW [s.112]"],
+            ["12:00", "", "Planowanie Przedsięwzięć wykład [s.507]", "Procesy Biznesowe LB [s. SIL 126]", "Język Angielski Wawrzyniaka 15 [s.209]", ""],
+            ["13:45", "", "Techniki Neuronauki [s.106]", "Techniki Neuronauki wykład [s. SIL 323]", "", ""],
+            ["15:30", "", "", "", "", ""],
+            ["17:45", "", "", "", "Wykład na błoniach", ""]
+        ],
+        odd: [
+            ["08:15", "", "", "Matematyka wykład", "Prog. Obiektowe LB [s.423]", "Matematyka CW [s.112]"],
+            ["10:00", "11:00 WF Tenis [Mickiewicza 16]", "Planowanie Przedsięwzięć [s.423]", "Procesy Biznesowe LB [s. SIL 126]", "Prog. Obiektowe LB [s.423]", "Matematyka CW [s.112]"],
+            ["12:00", "", "Seminarium Dyplomowe [gab.410]", "Procesy Biznesowe LB [s. SIL 126]", "Język Angielski Wawrzyniaka 15 [s.209]", ""],
+            ["13:45", "", "Techniki Neuronauki [s.106]", "Podstawy Rachunkowości wykład [s. 104]", "", ""],
+            ["15:30", "", "", "", "", ""],
+            ["17:45", "", "", "", "Wykład na błoniach", ""]
+        ]
+    };
+
+    const weekSelect = document.getElementById('week_select');
+    const scheduleTable = document.getElementById('schedule_table');
+
+    function updateSchedule(week) {
+        const schedule = scheduleData[week];
+        let html = '<tr><th>Godzina</th><th>Poniedziałek</th><th>Wtorek</th><th>Środa</th><th>Czwartek</th><th>Piątek</th></tr>';
+        schedule.forEach(row => {
+            html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td></tr>`;
+        });
+        scheduleTable.innerHTML = html;
+    }
+
+    function selectWeek(week) {
+        updateSchedule(week);
+    }
+
+    selectWeek('even'); // Domyślnie wybierz tydzień parzysty
+
+</script>
+
+</body>
+</html>
